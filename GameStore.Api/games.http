@@ -1,2 +1,20 @@
 
 GET http://localhost:5138/games
+
+###
+GET http://localhost:5138/games/2
+
+###
+GET http://localhost:5138/games/8
+
+
+####
+POST http://localhost:5138/games
+Content-Type: application/json
+
+{
+    "name": "God of War",
+    "genre": "Action-adventure",
+    "price": 49.99,
+    "releaseDate": "2018-04-20"
+}
