@@ -32,4 +32,21 @@ app.MapPost("games", (CreateVideoGameDetos newVideoVideo) =>
 
 });
 
+    // put games
+app.MapPut("/games/{id}", (int id, UpdateVideoGameDetos updateVideoGame) =>
+{
+    var game = games.Find(g => g.Id == id);
+    if (game is null) return Results.NotFound();
+
+    var updatedGame = game with
+    {
+        Name = updateVideoGame.Name,
+        Genre = updateVideoGame.Genre,
+        Price = updateVideoGame.Price,
+        ReleaseDate = updateVideoGame.ReleaseDate
+    };
+    games.Remove(game);
+    games.Add(updatedGame);
+    return Results.NoContent();
+});
 app.Run();
